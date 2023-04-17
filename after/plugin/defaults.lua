@@ -20,3 +20,6 @@ vim.opt.splitbelow = true
 
 -- make '-' not a word delimeter
 --vim.opt.iskeyword:append("-")
+
+-- add offset from top/bottom of buffer for cursor 
+vim.opt.scrolloff = 10
