@@ -506,4 +506,3 @@ cmp.setup {
 --  exclude_filetypes = {"TelescopePrompt"}
 --})
 
-
