@@ -135,18 +135,19 @@ require('lazy').setup({
     -- See `:help lualine.txt`
     opts = {
       options = {
-        icons_enabled = true,
+        -- icons_enabled = true,
         theme = 'tokyonight',
         component_separators = '|',
         section_separators = '',
       },
-      sections = {
-        lualine_a = {
-          show_filename_only = false,
-          mode = 2,
-          use_mode_colors = true,
-        }
-      }
+      -- sections = {
+      --   lualine_a = {
+      --     'buffers',
+      --     show_filename_only = false,
+      --     mode = 2,
+      --     use_mode_colors = true,
+      --   }
+      -- }
     },
   },
 
