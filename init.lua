@@ -112,6 +112,10 @@ require('lazy').setup({
         changedelete = { text = '~' },
       },
     },
+    -- adds multiple cursor support
+    {
+      'mg979/vim-visual-multi',
+    },
   },
 
   -- { -- Theme inspired by Atom
@@ -185,6 +189,20 @@ require('lazy').setup({
 
   -- github copilot
   'github/copilot.vim',
+
+  -- ChatGPT
+  {
+    "jackMort/ChatGPT.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("chatgpt").setup()
+    end,
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim"
+    }
+  },
 
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
