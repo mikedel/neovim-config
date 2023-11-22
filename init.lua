@@ -112,6 +112,10 @@ require('lazy').setup({
         changedelete = { text = '~' },
       },
     },
+    -- adds multiple cursor support
+    {
+      'mg979/vim-visual-multi',
+    },
   },
 
   -- { -- Theme inspired by Atom
@@ -135,11 +139,19 @@ require('lazy').setup({
     -- See `:help lualine.txt`
     opts = {
       options = {
-        icons_enabled = false,
+        -- icons_enabled = true,
         theme = 'tokyonight',
         component_separators = '|',
         section_separators = '',
       },
+      -- sections = {
+      --   lualine_a = {
+      --     'buffers',
+      --     show_filename_only = false,
+      --     mode = 2,
+      --     use_mode_colors = true,
+      --   }
+      -- }
     },
   },
 
@@ -147,9 +159,10 @@ require('lazy').setup({
     'lukas-reineke/indent-blankline.nvim',
     -- Enable `lukas-reineke/indent-blankline.nvim`
     -- See `:help indent_blankline.txt`
+    main = "ibl",
     opts = {
-      char = '┊',
-      show_trailing_blankline_indent = false,
+      -- char = '┊',
+      -- show_trailing_blankline_indent = false,
     },
   },
 
@@ -185,6 +198,20 @@ require('lazy').setup({
 
   -- github copilot
   'github/copilot.vim',
+
+  -- ChatGPT
+  {
+    "jackMort/ChatGPT.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("chatgpt").setup()
+    end,
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim"
+    }
+  },
 
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.

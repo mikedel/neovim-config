@@ -18,6 +18,9 @@ vim.opt.backspace = "indent,eol,start"
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
+-- setup wildmenu
+vim.opt.wildmenu = true
+
 -- make '-' not a word delimeter
 --vim.opt.iskeyword:append("-")
 
@@ -65,3 +68,5 @@ vim.keymap.set('n', '<C-d>', "<C-d>zz")
 vim.keymap.set('n', '<C-b>', "<C-b>zz")
 vim.keymap.set('n', '<C-u>', "<C-u>zz")
 vim.keymap.set('n', '<C-f>', "<C-f>zz")
+
+
