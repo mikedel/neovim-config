@@ -26,6 +26,7 @@ vim.opt.wildmenu = true
 
 -- add offset from top/bottom of buffer for cursor 
 vim.opt.scrolloff = 10
+vim.opt.sidescrolloff = 10
 
 
 -- Moving around tabs
