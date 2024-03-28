@@ -26,6 +26,7 @@ vim.opt.wildmenu = true
 
 -- add offset from top/bottom of buffer for cursor 
 vim.opt.scrolloff = 10
+vim.opt.sidescrolloff = 10
 
 
 -- Moving around tabs
@@ -69,4 +70,5 @@ vim.keymap.set('n', '<C-b>', "<C-b>zz")
 vim.keymap.set('n', '<C-u>', "<C-u>zz")
 vim.keymap.set('n', '<C-f>', "<C-f>zz")
 
-
+-- file browser telescope
+vim.keymap.set('n', '<leader>fd', ':Telescope file_browser<CR>')

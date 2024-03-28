@@ -191,6 +191,10 @@ require('lazy').setup({
       return vim.fn.executable 'make' == 1
     end,
   },
+  {
+    "nvim-telescope/telescope-file-browser.nvim",
+    dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
+  },
 
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
@@ -310,7 +314,13 @@ require('telescope').setup {
       },
     },
   },
+  extensions = {
+    file_browser = {
+      hijack_netrw = true,
+    },
+  },
 }
+require("telescope").load_extension("file_browser")
 
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
@@ -556,7 +566,6 @@ cmp.setup {
     { name = 'copilot' },
   },
 }
-
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
