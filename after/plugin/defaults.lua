@@ -4,6 +4,8 @@ vim.opt.relativenumber = true
 -- indent and wrap
 vim.opt.autoindent = true
 vim.opt.wrap = false
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
 
 -- highlight current line
 vim.opt.cursorline = true
