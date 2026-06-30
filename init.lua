@@ -79,10 +79,16 @@ require('lazy').setup({
   --  The configuration is done below. Search for lspconfig to find it below.
   { -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
+    -- Pinned: newer nvim-lspconfig hard-requires Nvim 0.10+. This is the last
+    -- commit before that requirement, compatible with 0.9.5.
+    commit = 'cb33dea610b7eff240985be9f6fe219920e630ef',
     dependencies = {
       -- Automatically install LSPs to stdpath for neovim
-      'williamboman/mason.nvim',
-      'williamboman/mason-lspconfig.nvim',
+      -- Pinned to the last 1.x releases: mason/mason-lspconfig 2.x require Nvim
+      -- 0.10+ (vim.fs.joinpath) and dropped the setup_handlers API this config
+      -- uses. 1.x supports Nvim 0.7+ and matches the config below.
+      { 'williamboman/mason.nvim', tag = 'v1.11.0' },
+      { 'williamboman/mason-lspconfig.nvim', tag = 'v1.32.0' },
 
       -- Useful status updates for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
@@ -177,7 +183,9 @@ require('lazy').setup({
   { 'numToStr/Comment.nvim', opts = {} },
 
   -- Fuzzy Finder (files, lsp, etc)
-  { 'nvim-telescope/telescope.nvim', version = '*', dependencies = { 'nvim-lua/plenary.nvim' } },
+  -- Pinned: newer telescope dropped Nvim 0.9 support (requires 0.10.4+). This is
+  -- the last commit before that, compatible with 0.9.5.
+  { 'nvim-telescope/telescope.nvim', commit = '84b9ba066d1860f7a586ce9cd732fd6c4f77d1d9', dependencies = { 'nvim-lua/plenary.nvim' } },
 
   -- Fuzzy Finder Algorithm which requires local dependencies to be built.
   -- Only load if `make` is available. Make sure you have the system
@@ -198,9 +206,12 @@ require('lazy').setup({
 
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
+    branch = 'master',
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
-      'nvim-treesitter/nvim-treesitter-context',
+      -- Pinned: newer commits use the LspRequest autocmd event, which requires
+      -- Nvim 0.11+. This is the last commit before that, compatible with 0.9.5.
+      { 'nvim-treesitter/nvim-treesitter-context', commit = 'f6c99b64111ab1424c8fde3d9a6f3cd08234f8cb' },
     },
     config = function()
       pcall(require('nvim-treesitter.install').update { with_sync = true })
@@ -211,18 +222,18 @@ require('lazy').setup({
   -- 'github/copilot.vim',
 
   -- supermaven
-  {
-    "supermaven-inc/supermaven-nvim",
-    config = function()
-      require("supermaven-nvim").setup({
-        color = {
-          suggestion_color = "#33CEFF",
-          cterm == 100,
-        },
-      })
-    end,
-  },
-
+  -- {
+  --   "supermaven-inc/supermaven-nvim",
+  --   config = function()
+  --     require("supermaven-nvim").setup({
+  --       color = {
+  --         suggestion_color = "#33CEFF",
+  --         cterm == 100,
+  --       },
+  --     })
+  --   end,
+  -- },
+  --
   -- ChatGPT
   -- {
   --   "jackMort/ChatGPT.nvim",
@@ -331,7 +342,7 @@ require('telescope').setup {
     },
   },
   extensions = {
-    file_browser = {
+    file_files = {
       hijack_netrw = true,
     },
   },
@@ -539,6 +550,13 @@ mason_lspconfig.setup_handlers {
 
 -- nvim-cmp setup
 local cmp = require 'cmp'
+
+-- temp diable autocomplete
+-- cmp.setup({
+--   completion = {
+--     autocomplete = false,
+--   },
+-- })
 local luasnip = require 'luasnip'
 
 luasnip.config.setup {}
@@ -588,7 +606,7 @@ luasnip.config.setup {}
 --   },
 -- }
 
--- The line beneath this is called `modeline`. See `:help modeline`
+-- The line beneath this is called `modefine`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
 
 -- tabnine

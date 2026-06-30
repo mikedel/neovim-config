@@ -3,5 +3,5 @@
 --
 -- See the kickstart.nvim README for more information
 return {
-	{ 'codota/tabnine-nvim', build = "./dl_binaries.sh" },
+-- 	{ 'codota/tabnine-nvim', build = "./dl_binaries.sh" },
 }

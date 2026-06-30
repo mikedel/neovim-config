@@ -14,7 +14,7 @@ vim.opt.cursorline = true
 vim.opt.backspace = "indent,eol,start"
 
 -- clipboard
---vim.opt.clipboard=unnamedplus
+vim.opt.clipboard='unnamedplus'
 
 -- split windows
 vim.opt.splitright = true
